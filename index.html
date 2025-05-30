@@ -1,19 +1,218 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Defense Strategy Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .strategy-card {
+            transition: all 0.3s ease;
+        }
+        .strategy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar {
+            height: 6px;
+            transition: width 0.6s ease;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .checklist-item.completed {
+            opacity: 0.7;
+        }
+        .checklist-item.completed span {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Header -->
+        <header class="mb-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Defense Strategy Dashboard</h1>
+                    <p class="text-gray-600 mt-2">Case Analysis & Trial Preparation Toolkit</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <input type="text" placeholder="Search case files..." class="pl-10 pr-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+                    </div>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
+                        <i class="fas fa-plus"></i>
+                        <span class="hidden md:inline">Add Note</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Case Status Bar -->
+            <div class="mt-8 bg-white rounded-xl shadow-md p-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800">Case #DPP-2023-0451</h2>
+                        <p class="text-gray-600">Aggravated Supply to Minor Under 16</p>
+                    </div>
+                    <div class="w-full md:w-auto">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-sm font-medium text-gray-700">Trial Preparation</span>
+                            <span class="text-sm font-medium text-gray-700">65%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-blue-600 h-2.5 rounded-full progress-bar" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Strategy Tabs -->
+            <div class="mb-8">
+                <div class="flex flex-wrap border-b border-gray-200">
+                    <button class="tab-btn px-4 py-2 font-medium text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-300 active" data-tab="witness">
+                        <i class="fas fa-user mr-2"></i>Witness Credibility
+                    </button>
+                    <button class="tab-btn px-4 py-2 font-medium text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-300" data-tab="doubt">
+                        <i class="fas fa-question mr-2"></i>Reasonable Doubt
+                    </button>
+                    <button class="tab-btn px-4 py-2 font-medium text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-300" data-tab="setup">
+                        <i class="fas fa-chess mr-2"></i>Potential Setup
+                    </button>
+                    <button class="tab-btn px-4 py-2 font-medium text-gray-600 hover:text-blue-600 border-b-2 border-transparent hover:border-blue-300" data-tab="toolkit">
+                        <i class="fas fa-tools mr-2"></i>Defense Toolkit
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="tab-content active" id="witness-tab">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Credibility Analysis Card -->
+                    <div class="strategy-card bg-white rounded-xl shadow-md p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Credibility Analysis</h3>
+                            <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Critical</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">The minor's credibility is the linchpin. Undermining it effectively can unravel the entire case.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-brain text-blue-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-800">Psychological evaluation</p>
+                                    <p class="text-xs text-gray-500">Challenge reliability of memory, perception, or suggestibility</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-exchange-alt text-blue-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-800">Statement inconsistencies</p>
+                                    <p class="text-xs text-gray-500">Compare across police, DPP, and court statements</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <i class="fas fa-users text-blue-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-800">External influences</p>
+                                    <p class="text-xs text-gray-500">Explore if foster care staff or peers influenced accusation</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 pt-4 border-t border-gray-200">
+                            <button class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center">
+                                <i class="fas fa-plus-circle mr-2"></i> Add credibility factor
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Voir Dire Strategy Card -->
+                    <div class="strategy-card bg-white rounded-xl shadow-md p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Voir Dire Strategy</h3>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">Advanced</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">A trial within a trial to challenge admissibility of unreliable or prejudicial evidence.</p>
+                        
+                        <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-4">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-exclamation-triangle text-blue-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h4 class="text-sm font-medium text-blue-800">Key Considerations</h4>
+                                    <ul class="mt-1 text-xs text-blue-700 list-disc list-inside space-y-1">
+                                        <li>Was evidence obtained properly?</li>
+                                        <li>Is testimony more prejudicial than probative?</li>
+                                        <li>Are there reliability issues with the evidence?</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center text-sm text-gray-600">
+                            <i class="fas fa-clock mr-2 text-gray-400"></i>
+                            <span>File motion 14 days before trial</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Witness Timeline Card -->
+                    <div class="strategy-card bg-white rounded-xl shadow-md p-6 md:col-span-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Witness Statement Timeline</h3>
+                            <button class="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center">
+                                <i class="fas fa-expand mr-2"></i> Full analysis
+                            </button>
+                        </div>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Context</th>
+                                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Key Claim</th>
+                                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Inconsistency</th>
+                                        <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">2023-05-12</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">Police interview</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">"He gave me the drugs at school"</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">No mention of location in later statements</td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Critical</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">2023-06-03</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">DPP statement</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">"It happened near the park"</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900">Contradicts school location</td>
+                                        <td class="px-4 py-3 whitespace-nowrap">
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Medium
 </html>
